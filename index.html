@@ -1,226 +1,584 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recover Fast | Premium Lifestyle Recovery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap"
+    <title>Recover Fast | Limitless Health, Limitless Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <style>
+        :root {
+            /* Brand Colors from Guidelines [cite: 10, 12] */
+            --brand-black: #000000;
+            --brand-blue: #3366CC;
+            --brand-green: #48B02B;
+            --brand-white: #FFFFFF;
+            --bg-light: #F9F9F9;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Smooth anchoring for Best Reads and other links */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-main);
+            background-color: var(--brand-white);
+            color: var(--brand-black);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1,
         h2,
-        h3 {
-            font-family: 'Playfair Display', serif;
+        h3,
+        h4,
+        .logo {
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+        /* NAVIGATION */
+        .header-wrapper {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            background: var(--brand-white);
+            border-bottom: 1px solid #eee;
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        .nav-top {
+            background: var(--brand-black);
+            padding: 6px 10%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        .nav-top a {
+            text-decoration: none;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brand-white);
+            font-weight: 600;
+            opacity: 0.8;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .nav-main {
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            color: var(--brand-black);
+            line-height: 1;
+        }
+
+        .logo span {
+            color: var(--brand-blue);
+        }
+
+        .slogan {
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: var(--brand-black);
+            font-weight: 700;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brand-black);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-nav {
+            background: var(--brand-black);
+            color: var(--brand-white) !important;
+            padding: 10px 20px;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 120px 10% 80px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .tag {
+            font-size: 11px;
+            color: var(--brand-green);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* PROGRAMS GRID */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .program-card {
+            background: var(--bg-light);
+            padding: 40px;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .program-card:hover {
+            border-color: var(--brand-blue);
+            background: white;
+        }
+
+        /* BENTO HUB STYLE */
+        .bento {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 280px 280px;
+            gap: 15px;
+        }
+
+        .bento-item {
+            background: var(--bg-light);
+            padding: 30px;
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-featured {
+            grid-row: span 2;
+            background: var(--brand-black);
+            color: var(--brand-white);
+            justify-content: flex-end;
+        }
+
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-box {
+            padding: 30px;
+            border-left: 3px solid var(--brand-blue);
+            background: var(--bg-light);
+        }
+
+        /* PROTOCOL STEPS */
+        .protocol-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .protocol-step {
+            padding: 40px 20px;
+            background: var(--bg-light);
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .step-num {
+            color: var(--brand-blue);
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--bg-light);
+            padding: 25px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: var(--brand-black);
+            color: var(--brand-white);
+            padding: 80px 10% 40px;
+        }
+
+        @media (max-width: 1024px) {
+
+            .nav-links,
+            .nav-top {
+                display: none;
+            }
+
+            .bento {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .features-grid,
+            .protocol-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
-<body class="bg-[#FDFBF9] text-gray-800 antialiased">
+<body>
 
-    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tight text-[#4A6741]">RECOVER FAST</div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest text-gray-600">
-                <a href="#about" class="hover:text-[#4A6741] transition">Our Story</a>
-                <a href="#how" class="hover:text-[#4A6741] transition">Method</a>
-                <a href="#programs" class="hover:text-[#4A6741] transition">Programs</a>
-            </div>
-            <a href="#contact"
-                class="bg-[#4A6741] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#3d5535] transition shadow-md">
-                Book Consultation
-            </a>
+    <div class="header-wrapper">
+        <div class="nav-top">
+            <a href="#blogs">Blogs</a>
+            <a href="#faq">FAQ</a>
+            <a href="#recipes">Recipes / Exercise</a>
+            <a href="#best-reads">Best Reads</a>
         </div>
-    </nav>
+        <nav class="nav-main">
+            <div class="logo-container">
+                <div class="logo">RECOVER <span>FAST</span></div>
+                <div class="slogan">Limitless Health, Limitless Life</div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#about">About</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#approach">Our Approach</a>
+                <a href="#features">Features</a>
+                <a href="#programs">Programs</a>
+                <a href="#contact" class="cta-nav">Contact Us</a>
+            </div>
+        </nav>
+    </div>
 
-    <section class="min-h-screen flex items-center pt-20 hero-gradient px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div class="reveal active">
-                <p class="text-[#4A6741] font-semibold tracking-widest uppercase text-sm mb-4">Established 1992</p>
-                <h1 class="text-5xl md:text-7xl mb-6 leading-tight">Recover Your Health, <span
-                        class="italic font-normal">Naturally.</span></h1>
-                <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                    Reclaim your vitality through expert-led, lifestyle-based reversal programs for chronic conditions.
-                    Rooted in holistic healing and clinical precision.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button
-                        class="bg-[#4A6741] text-white px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all">Start
-                        Your Recovery Journey</button>
-                    <button
-                        class="border border-gray-300 px-8 py-4 rounded-lg font-semibold hover:bg-white transition-all">Our
-                        Philosophy</button>
-                </div>
-                <p class="mt-8 text-xs text-gray-400 italic">Physiotherapy & Rehabilitation Expertise since 2014</p>
-            </div>
-            <div class="relative reveal active">
-                <div class="rounded-2xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1000"
-                        alt="Yoga and Wellness" class="w-full h-full object-cover">
-                </div>
-            </div>
+    <section class="hero" style="height: 85vh; display: flex; align-items: center; margin-top: 80px; border: none;">
+        <div style="max-width: 750px;">
+            <span class="tag" style="color: var(--brand-blue)">EST. 1992</span>
+            <h1 style="font-size: 4.5rem; line-height: 0.9; margin: 20px 0;">Beyond Management. <br><span
+                    style="color:var(--brand-green)">Towards Reversal.</span></h1>
+            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px;">Clinical protocols rooted in 30 years of
+                naturopathy and modern rehabilitation. Reclaim your health from chronic conditions.</p>
+            <a href="#programs" class="cta-nav"
+                style="padding: 18px 45px; font-weight: 800; letter-spacing: 1px;">EXPLORE PROGRAMS</a>
         </div>
     </section>
 
-    <section id="about" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-4xl mb-8">A Legacy of Healing, Reimagined.</h2>
-            <p class="text-xl text-gray-600 leading-relaxed mb-12">
-                Recover Fast is the next step in the evolution of the <strong>Natural Health Home</strong>. We merge 30
-                years of naturopathic wisdom with modern rehabilitation science to help you transition from managing
-                symptoms to true recovery.
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8 text-left border-t border-gray-100 pt-12">
-                <div>
-                    <span class="text-[#4A6741] font-bold text-xl">1992</span>
-                    <h4 class="font-semibold mt-2">The Foundation</h4>
-                    <p class="text-sm text-gray-500 mt-2">Natural Health Home opens, pioneering Naturopathy & Yoga.</p>
-                </div>
-                <div>
-                    <span class="text-[#4A6741] font-bold text-xl">2014</span>
-                    <h4 class="font-semibold mt-2">Clinical Growth</h4>
-                    <p class="text-sm text-gray-500 mt-2">Expansion into expert Physiotherapy and Rehabilitation.</p>
-                </div>
-                <div>
-                    <span class="text-[#4A6741] font-bold text-xl">Today</span>
-                    <h4 class="font-semibold mt-2">Recover Fast</h4>
-                    <p class="text-sm text-gray-500 mt-2">Personalized lifestyle reversal for chronic conditions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="how" class="py-24 px-6 bg-[#F9F8F6]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl mb-4">The Four Pillars of Recovery</h2>
-                <p class="text-gray-500">A multidisciplinary approach tailored to your unique biology.</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
-                    <div
-                        class="w-12 h-12 bg-[#F5F2ED] rounded-full flex items-center justify-center mb-6 text-[#4A6741]">
-                        🥗</div>
-                    <h3 class="text-xl font-semibold mb-3">Nutrition Plans</h3>
-                    <p class="text-gray-500 text-sm">Whole-food, plant-forward protocols to reset metabolic health.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
-                    <div
-                        class="w-12 h-12 bg-[#F5F2ED] rounded-full flex items-center justify-center mb-6 text-[#4A6741]">
-                        🧘</div>
-                    <h3 class="text-xl font-semibold mb-3">Therapeutic Movement</h3>
-                    <p class="text-gray-500 text-sm">Corrective exercise and yoga tailored to your physical capacity.
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
-                    <div
-                        class="w-12 h-12 bg-[#F5F2ED] rounded-full flex items-center justify-center mb-6 text-[#4A6741]">
-                        🛡️</div>
-                    <h3 class="text-xl font-semibold mb-3">Medical Guidance</h3>
-                    <p class="text-gray-500 text-sm">Safety-first protocols overseen by experts to ensure recovery.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-sm reveal">
-                    <div
-                        class="w-12 h-12 bg-[#F5F2ED] rounded-full flex items-center justify-center mb-6 text-[#4A6741]">
-                        📈</div>
-                    <h3 class="text-xl font-semibold mb-3">Ongoing Monitoring</h3>
-                    <p class="text-gray-500 text-sm">Data-driven support to ensure sustainable, long-term results.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="programs" class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-            <div class="md:w-1/3 reveal">
-                <h2 class="text-4xl mb-6 leading-tight">Expert Care for Chronic Conditions.</h2>
-                <p class="text-gray-600 mb-8">We specialize in lifestyle-based reversal that targets the root cause, not
-                    just the symptoms.</p>
-                <ul class="space-y-4 font-semibold text-[#4A6741]">
-                    <li>• Diabetes Type-2 Reversal</li>
-                    <li>• Hypertension Management</li>
-                    <li>• Obesity & Metabolic Health</li>
-                    <li>• PCOD & Hormonal Balance</li>
-                    <li>• Thyroid Optimization</li>
-                </ul>
-            </div>
-            <div class="md:w-2/3 grid grid-cols-2 gap-4 reveal">
-                <img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&q=80&w=600"
-                    class="rounded-lg shadow-lg" alt="Healthy Food">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=600"
-                    class="rounded-lg shadow-lg mt-8" alt="Movement">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 bg-[#4A6741] text-white text-center">
-        <div class="max-w-2xl mx-auto reveal">
-            <h2 class="text-4xl mb-6">Your Path to Recovery Starts Here.</h2>
-            <p class="text-lg opacity-90 mb-10">Experience the perfect blend of 30+ years of tradition and clinical
-                expertise.</p>
-            <div class="flex justify-center gap-6">
-                <button
-                    class="bg-white text-[#4A6741] px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Book
-                    a Consultation</button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-12 px-6 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+    <section id="about">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
             <div>
-                <div class="text-xl font-bold text-[#4A6741] mb-2">RECOVER FAST</div>
-                <p class="text-xs text-gray-400 max-w-sm">
-                    Disclaimer: Recover Fast provides lifestyle-based support. Our programs are designed to complement
-                    medical care, not replace the advice of your physician.
+                <span class="tag">Our Story</span>
+                <h2 style="font-size: 2.8rem; margin-bottom: 25px;">34 Years of Clinical Wisdom</h2>
+                <p style="margin-bottom: 15px;">Recover Fast is the digital evolution of the <strong>Natural Health
+                        Home</strong> (Est. 1992). For three decades, we have mastered lifestyle-based reversal.</p>
+                <p>By merging Naturopathy with the clinical precision of Physiotherapy, we provide a 360-degree recovery
+                    ecosystem designed for longevity.</p>
+            </div>
+            <div
+                style="background: var(--bg-light); height: 400px; border: 1px solid #eee; display: flex; align-items: center; justify-content: center;">
+                <span style="letter-spacing: 3px; opacity: 0.4; font-weight: 800; font-size: 12px;">[LEGACY ARCHIVE
+                    1992]</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" style="background: var(--brand-black); color: white;">
+        <div class="section-header">
+            <h2 style="color: white;">Why Recover Fast?</h2>
+        </div>
+        <div class="features-grid">
+            <div class="why-card" style="border-left: 3px solid var(--brand-green); padding: 20px;">
+                <h4 style="color: var(--brand-green); margin-bottom: 10px;">Expert Pods</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">A dedicated team of Naturopaths and Physios for every
+                    member.</p>
+            </div>
+            <div class="why-card" style="border-left: 3px solid var(--brand-blue); padding: 20px;">
+                <h4 style="color: var(--brand-blue); margin-bottom: 10px;">Clinical Roots</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Rooted in a physical health sanctuary since 1992.</p>
+            </div>
+            <div class="why-card" style="border-left: 3px solid var(--brand-white); padding: 20px;">
+                <h4 style="color: var(--brand-white); margin-bottom: 10px;">Evidence Aware</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Protocols based on thousands of successful reversal cases.
                 </p>
             </div>
-            <div class="text-right text-sm text-gray-500">
-                &copy; 2025 Recover Fast. A Natural Health Home Initiative.
+        </div>
+    </section>
+
+    <section id="approach" style="background: var(--bg-light);">
+        <div class="section-header">
+            <span class="tag" style="color: var(--brand-blue)">Methodology</span>
+            <h2 style="font-size: 3rem;">The Bio-Reset Protocol</h2>
+        </div>
+        <div class="protocol-container">
+            <div class="protocol-step">
+                <span class="step-num">STEP 01</span>
+                <h4>Deep Diagnostics</h4>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Comprehensive metabolic and
+                    musculoskeletal assessment to map your unique baseline.</p>
             </div>
+            <div class="protocol-step">
+                <span class="step-num">STEP 02</span>
+                <h4>Root-Cause Detox</h4>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Naturopathy-led internal cleansing to
+                    prepare cellular pathways for full recovery.</p>
+            </div>
+            <div class="protocol-step">
+                <span class="step-num">STEP 03</span>
+                <h4>Structural Alignment</h4>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Integration of Physiotherapy and Yoga to
+                    correct mechanical stress and posture.</p>
+            </div>
+            <div class="protocol-step" style="background: var(--brand-blue); color: white; border: none;">
+                <span class="step-num" style="color: white; opacity: 0.8;">STEP 04</span>
+                <h4 style="color: white;">Habit Sustainability</h4>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.9;">Long-term lifestyle integration with
+                    continuous biometric monitoring and support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="section-header">
+            <h2>Modern Recovery Suite</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-box">
+                <h4>24/7 Expert Concierge</h4>
+                <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Instant access to your Naturopath and
+                    Physio whenever you need clinical clarity.</p>
+            </div>
+            <div class="feature-box">
+                <h4>Biometric Sync</h4>
+                <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">We track your recovery through wearables
+                    to adjust your protocol in real-time.</p>
+            </div>
+            <div class="feature-box">
+                <h4>Virtual Dojo</h4>
+                <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">Daily live-guided therapeutic movement
+                    sessions streamed from our legacy centers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" style="background: var(--brand-black); color: white;">
+        <div class="section-header">
+            <h2 style="color: white;">Targeted Recovery Tracks</h2>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card" style="background: rgba(255,255,255,0.05); border-color: #333;">
+                <span class="tag">Metabolic Health</span>
+                <h3 style="color: white;">Diabetes Remission</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">A science-led journey to restore insulin
+                    sensitivity and stabilize glucose naturally.</p>
+            </div>
+            <div class="program-card" style="background: rgba(255,255,255,0.05); border-color: #333;">
+                <span class="tag">Hormonal Balance</span>
+                <h3 style="color: white;">PCOD Harmony</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">Balancing cycles through targeted
+                    nutrition, therapeutic yoga, and stress-response training.</p>
+            </div>
+            <div class="program-card" style="background: rgba(255,255,255,0.05); border-color: #333;">
+                <span class="tag">Cardiac Wellness</span>
+                <h3 style="color: white;">Hypertension Control</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">Reducing arterial pressure through
+                    structural alignment and sodium-metabolic balance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blogs">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px;">
+            <div>
+                <span class="tag">Latest Insights</span>
+                <h2>Recovery Education</h2>
+            </div>
+            <a href="#" style="color: var(--brand-blue); font-weight: 800; font-size: 11px; text-decoration: none;">VIEW
+                ALL ARTICLES →</a>
+        </div>
+        <div class="programs-grid">
+            <article class="program-card">
+                <span class="tag">Metabolic</span>
+                <h3>The Insulin Myth</h3>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">Understanding why timing matters more
+                    than calories for hormonal balance.</p>
+                <a href="#"
+                    style="color: var(--brand-blue); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 20px; display: block;">READ
+                    ARTICLE</a>
+            </article>
+            <article class="program-card">
+                <span class="tag">Research</span>
+                <h3>Sodium & Mechanics</h3>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">The link between structural alignment and
+                    hypertension management.</p>
+                <a href="#"
+                    style="color: var(--brand-blue); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 20px; display: block;">READ
+                    ARTICLE</a>
+            </article>
+        </div>
+    </section>
+
+    <section id="faq" style="background: var(--bg-light);">
+        <div class="section-header">
+            <h2>Common Questions</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <h4 style="color: var(--brand-blue); font-size: 1rem;">Is this program safe for seniors?</h4>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Yes. Our physio-led protocols are
+                    low-impact and specifically adjusted for joint health and bone density.</p>
+            </div>
+            <div class="faq-item">
+                <h4 style="color: var(--brand-blue); font-size: 1rem;">Can I continue medical treatments?</h4>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Absolutely. Our programs are integrative.
+                    We provide clinical data for you to share with your primary physician.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="recipes">
+        <div class="section-header">
+            <span class="tag" style="color: var(--brand-blue)">The Daily Hub</span>
+            <h2>Lifestyle Prescriptions</h2>
+        </div>
+        <div class="bento">
+            <div class="bento-item">
+                <span class="tag">Recipe of the Day</span>
+                <h4>The Metabo-Smoothie</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Formulated for Insulin sensitivity.</p>
+                <a href="#"
+                    style="color: var(--brand-blue); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 10px; display: block;">GET
+                    RECIPE →</a>
+            </div>
+            <div class="bento-item">
+                <span class="tag">Exercise flow</span>
+                <h4>12-Min Spinal Reset</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Physiotherapy routine for back health.</p>
+                <a href="#"
+                    style="color: var(--brand-blue); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 10px; display: block;">WATCH
+                    VIDEO →</a>
+            </div>
+            <div class="bento-item" style="grid-column: span 2;">
+                <span class="tag">Nutrition Insight</span>
+                <h4>The Anti-Inflammatory Kitchen</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">7 seasonal recipes to reduce systemic inflammation and
+                    cellular stress.</p>
+                <a href="#"
+                    style="color: var(--brand-blue); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 10px; display: block;">READ
+                    MORE →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="best-reads" style="background: var(--bg-light);">
+        <div class="section-header">
+            <span class="tag">Knowledge Hub</span>
+            <h2>Best Reads & Resources</h2>
+        </div>
+        <div class="bento">
+            <div class="bento-item bento-featured">
+                <span class="tag" style="color: var(--brand-green)">Masterclass</span>
+                <h2 style="color: white; font-size: 2rem;">The 1992 Manifesto</h2>
+                <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">A deep dive into the foundation of our
+                    recovery philosophy and why natural health is the only path to limitless living.</p>
+                <a href="#"
+                    style="color: var(--brand-green); font-weight: 800; font-size: 10px; text-decoration: none; margin-top: 20px; display: block;">READ
+                    MANIFESTO →</a>
+            </div>
+            <div class="bento-item">
+                <span class="tag">Clinical Study</span>
+                <h4>Gut & Blood Pressure</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">How the microbiome dictates arterial health.</p>
+            </div>
+            <div class="bento-item">
+                <span class="tag">Longevity</span>
+                <h4>The Sleep Protocol</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Optimizing circadian rhythm for repair.</p>
+            </div>
+            <div class="bento-item" style="grid-column: span 2;">
+                <span class="tag">Research Archive</span>
+                <h4>30 Years of Reversal Data</h4>
+                <p style="font-size: 0.85rem; opacity: 0.7;">An overview of metabolic success rates from our legacy
+                    clinical records spanning three decades.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: var(--brand-black); color: white; border: none;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div>
+                <h2 style="color: white; font-size: 3.5rem; line-height: 0.9;">Start Your <br><span
+                        style="color: var(--brand-green)">Recovery.</span></h2>
+                <p style="margin-top: 25px; opacity: 0.6; font-size: 1.1rem;">Speak with a consultant to align your
+                    health goals with our clinical legacy.</p>
+                <div style="margin-top: 30px; font-weight: 700; font-size: 12px; letter-spacing: 1px;">
+                    EMAIL: CLINICAL@RECOVERFAST.COM<br>
+                    LINE: +1 (800) RECOVERY
+                </div>
+            </div>
+            <div style="background: white; padding: 50px;">
+                <form>
+                    <input type="text" placeholder="FULL NAME"
+                        style="width: 100%; padding: 15px; border: 1px solid #ddd; margin-bottom: 20px; font-family: inherit; font-weight: 700;">
+                    <select
+                        style="width: 100%; padding: 15px; border: 1px solid #ddd; margin-bottom: 20px; font-family: inherit; font-weight: 700;">
+                        <option>SELECT PROGRAM</option>
+                        <option>Diabetes Remission</option>
+                        <option>Hypertension Control</option>
+                        <option>PCOD Harmony</option>
+                    </select>
+                    <button type="submit"
+                        style="width: 100%; background: var(--brand-black); color: white; padding: 20px; border: none; font-weight: 800; cursor: pointer; letter-spacing: 1px;">REQUEST
+                        DISCOVERY CALL</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div style="text-align: center;">
+            <div class="logo" style="color: white; font-size: 2.2rem;">RECOVER <span>FAST</span></div>
+            <div class="slogan" style="color: white; opacity: 0.5; margin-bottom: 50px;">Limitless Health, Limitless
+                Life</div>
+            <p style="font-size: 10px; opacity: 0.4; letter-spacing: 1px;">© 2026 RECOVER FAST. A NATURAL HEALTH HOME
+                INITIATIVE. EST. 1992.</p>
         </div>
     </footer>
 
-    <script>
-        // Simple scroll animation script
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    </script>
 </body>
 
 </html>
