@@ -220,6 +220,30 @@
             border: 1px solid #eee;
         }
 
+        /* Add this to your existing styles */
+        .protocol-step {
+            transition: all 0.3s ease;
+            /* Ensures smooth transition when hovering */
+            cursor: pointer;
+            /* Changes the cursor to a hand to show it is interactive */
+        }
+
+        .protocol-step:hover {
+            background: var(--brand-blue) !important;
+            color: white !important;
+            border-color: var(--brand-blue) !important;
+            transform: translateY(-5px);
+            /* Optional: lifts the card slightly for better feedback */
+        }
+
+        /* Ensures the text inside turns white on hover */
+        .protocol-step:hover .step-num,
+        .protocol-step:hover h4,
+        .protocol-step:hover p {
+            color: white !important;
+            opacity: 1 !important;
+        }
+
         .step-num {
             color: var(--brand-blue);
             font-size: 12px;
@@ -363,9 +387,9 @@
                 <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Integration of Physiotherapy and Yoga to
                     correct mechanical stress and posture.</p>
             </div>
-            <div class="protocol-step" style="background: var(--brand-blue); color: white; border: none;">
-                <span class="step-num" style="color: white; opacity: 0.8;">STEP 04</span>
-                <h4 style="color: white;">Habit Sustainability</h4>
+            <div class="protocol-step">
+                <span class="step-num">STEP 04</span>
+                <h4>Habit Sustainability</h4>
                 <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.9;">Long-term lifestyle integration with
                     continuous biometric monitoring and support.</p>
             </div>
